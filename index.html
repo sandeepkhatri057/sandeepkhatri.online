@@ -3,27 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jack ASS Portfolio</title>
+    <title>Interactive Silly Site</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #f06, #ffba00, #00ff00, #00aaff);
+            background-size: 400% 400%;
+            animation: gradientBG 10s ease infinite;
+            font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .speech-bubble {
+            position: relative;
+            background: #ff66cc;
+            border-radius: .4em;
+            padding: 20px;
+            color: #fff;
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            width: 320px;
+            margin-bottom: 20px;
+            border: 5px solid #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .speech-bubble:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border: 20px solid transparent;
+            border-top-color: #ff66cc;
+            border-bottom: 0;
+            border-left: 0;
+            margin-left: -10px;
+            margin-bottom: -20px;
+        }
+        .speech-bubble.clicked {
+            background: #66ff66;
+        }
+        .dog {
+            width: 180px;
+            height: auto;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            animation: bounce 2s infinite;
+            transition: transform 0.3s ease;
+        }
+        .dog:hover {
+            transform: scale(1.1);
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-30px);
+            }
+            60% {
+                transform: translateY(-15px);
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Sandeep Khatri</h1>
-        <p>Prashijan Shrestha</p>
-    </header>
-    <section id="about">
-        <h2>About Me</h2>
-        <p>Welcome to my portfolio! I am a dedicated complex issues maker.</p>
-    </section>
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="project">
-            <h3>Project Name</h3>
-            <p>Description of the project, technologies used, and what you learned.</p>
-            <a href="#">View on GitHub</a>
-        </div>
-    </section>
-    <footer>
-        <p>Contact: <a href="mailto:sandeepkhatri057@gmail.com">sandeepkhatri057@gmail.com</a></p>
-    </footer>
+    <div id="bubble" class="speech-bubble">
+        Prashijan is a silly Jack Ass!
+    </div>
+    <img src="https://www.allthingsdogs.com/wp-content/uploads/2018/10/Play-Bow-Dog-Body-Language-678x381.jpg" alt="Funny Dog" class="dog">
+
+    <script>
+        document.getElementById('bubble').addEventListener('click', function() {
+            const bubble = this;
+            if (bubble.classList.contains('clicked')) {
+                bubble.classList.remove('clicked');
+                bubble.textContent = 'Prashijan is a silly Jack Ass!';
+            } else {
+                bubble.classList.add('clicked');
+                bubble.textContent = 'Gotcha! Click me again!';
+            }
+        });
+    </script>
 </body>
 </html>
